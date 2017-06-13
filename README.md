@@ -18,7 +18,7 @@ Install the jq dependency (https://stedolan.github.io/jq/download/) if you don't
 
 Copy the [k8s-auth-client.sh](k8s-auth-client.sh) script somewhere on your path, and set it executable.
 
-`chmod u+x `k8s-auth-client.sh`
+`chmod u+x k8s-auth-client.sh`
 
 Create a config file named [.k8s-auth-client](.k8s-auth-client) in your home folder. Edit the values to fit your setup.
 
