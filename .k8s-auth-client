@@ -1,0 +1,13 @@
+# Issuer URL, for Keycloak this will be the base URL for the realm
+K8S_OIDC_ISSUER=https://www.example.com/auth/realms/example_realm
+
+K8S_OIDC_CLIENT_ID=example_client
+K8S_OIDC_CLIENT_SECRET=secret_value
+
+# OIDC token endpoint, for Keycloak it's the base URL for the realm + '/protocol/openid-connect/token'
+K8S_OIDC_TOKEN_ENDPOINT=https://www.example.com/auth/realms/example_realm/protocol/openid-connect/token
+
+# The following values are optional - use when not running on MacOS.
+# Remember to limit read access of this config file in such cases.
+K8S_AUTH_USERNAME=username
+K8S_AUTH_PASSWORD=password
