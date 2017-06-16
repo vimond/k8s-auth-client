@@ -38,8 +38,5 @@ Usage
  If you have set a MacOS Keychain password as described under installation these credentials will be fetched
  and used automatically. Any credentials configured in the config file will override these. If using the config
  file to store credentials please remember to restrict access to it appropriately.
- 
- TODO
- ----
- * Add MFA support
+
 
