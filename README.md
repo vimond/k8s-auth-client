@@ -9,6 +9,8 @@ a confidential client. It then sets the id and refresh tokens in the Kubernetes 
  new tokens as needed.
 
 This script has been tested using [Keycloak](http://www.keycloak.org/)
+
+Please note that this script requires that a MFA (TOTP) code be used, for added security.
                               
 Installation
 -------------
