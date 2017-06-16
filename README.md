@@ -1,7 +1,7 @@
 Kubernetes OIDC authentication client
 =====================================
 
-This script is intended to be used as a helper script to be used when using OIDC authentication together with Kubernetes.
+This script is intended to be used as a helper script when using OIDC authentication together with Kubernetes.
 
 The script authenticates with an OIDC compliant identity provider using the Resource Owner Password Credentials grant flow with 
 a confidential client. It then sets the id and refresh tokens in the Kubernetes config file for the selected user,
