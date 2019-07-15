@@ -22,7 +22,7 @@ set -o nounset
 read -p 'MFA code:' TOTP
 
 #fetch and parse tokens from Keycloak
-KEYCLOAK_RESPONSE=$(curl -# --data "grant_type=password&client_id=$K8S_OIDC_CLIENT_ID&username=$K8S_AUTH_USERNAME&password=$K8S_AUTH_PASSWORD&scope=oidc&client_secret=$K8S_OIDC_CLIENT_SECRET&totp=$TOTP" $K8S_OIDC_TOKEN_ENDPOINT)
+KEYCLOAK_RESPONSE=$(curl -# --data "grant_type=password&client_id=$K8S_OIDC_CLIENT_ID&username=$K8S_AUTH_USERNAME&password=$K8S_AUTH_PASSWORD&scope=openid&client_secret=$K8S_OIDC_CLIENT_SECRET&totp=$TOTP" $K8S_OIDC_TOKEN_ENDPOINT)
 K8S_REFRESH_TOKEN=$(echo ${KEYCLOAK_RESPONSE} | jq -r '.refresh_token')
 K8S_ID_TOKEN=$(echo ${KEYCLOAK_RESPONSE} | jq -r '.id_token')
 
