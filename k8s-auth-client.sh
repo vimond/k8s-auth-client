@@ -1,14 +1,16 @@
-#!/bin/bash
+#!/bin/bash -x
 if [ "$#" -ne 1 ] ; then
   echo "Usage: k8s-auth-client.sh <K8S account name> " >&2
   exit 1
 fi
 
+KUBE_CONFIG_USERNAME=$1
+
 #Basic error handling
 set -o errexit
 set -o pipefail
 
-source ~/.k8s-auth-client
+source ~/.kube/$KUBE_CONFIG_USERNAME.k8s-auth-client
 
 if [[ -z $K8S_AUTH_USERNAME || -z $K8S_AUTH_PASSWORD ]]; then
 	#fetch password from keychain
@@ -27,7 +29,7 @@ K8S_REFRESH_TOKEN=$(echo ${KEYCLOAK_RESPONSE} | jq -r '.refresh_token')
 K8S_ID_TOKEN=$(echo ${KEYCLOAK_RESPONSE} | jq -r '.id_token')
 
 #set Kubernetes credentials
-kubectl config set-credentials $1 \
+kubectl config set-credentials $KUBE_CONFIG_USERNAME \
 	--auth-provider=oidc \
 	--auth-provider-arg=idp-issuer-url=$K8S_OIDC_ISSUER \
 	--auth-provider-arg=client-id=$K8S_OIDC_CLIENT_ID \

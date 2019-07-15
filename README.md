@@ -21,7 +21,7 @@ Copy the [k8s-auth-client.sh](k8s-auth-client.sh) script somewhere on your path,
 
 `chmod u+x k8s-auth-client.sh`
 
-Create a config file named [.k8s-auth-client](.k8s-auth-client) in your home folder. Edit the values to fit your setup.
+Create a config file named [<Kubernetes user to log in>.k8s-auth-client](.k8s-auth-client) in your `~/.kube/` folder. Edit the values to fit your setup.
 
 MacOS specific configuration:
 
@@ -38,9 +38,12 @@ If you have set a MacOS Keychain password as described under installation these 
 and used automatically. Any credentials configured in the config file will override these. If using the config
 file to store credentials please remember to restrict access to it appropriately.
 
-## Keycloak specific stuff
+## Keycloak
 
 As of keycloak 6.x (and other versions).
 
-The client need to be a `confidential` client.
-You need to enable `Direct access grants enabled` and `Service accounts enabled`.
+You should create a client for your cluster. The client needs to be a `confidential` client.
+You need to enable `Direct access grants enabled` and `Service accounts enabled` on the Client page.
+You can use a custom group mapper to map groups with full path to your id token.
+
+WARNING: A token that takes long to expire is a security issue. You can increase the refresh token expiration via Realm/Tokens page, option `SSO Session Idle`.
